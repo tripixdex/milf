@@ -1,3 +1,16 @@
+# OS / editor clutter
 .DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+__pycache__/
+*.py[cod]
+~$*.doc
+~$*.docx
+*.log
+
+# Vendor payload and local runtime-only surfaces
 Лаб PSS.zip
 Лаб PSS/
+_pss_payload_extracted/
+_pss_install_probe/
