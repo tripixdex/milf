@@ -1,35 +1,45 @@
-# Observed Export Surfaces
+# OBSERVED_EXPORT_SURFACES
 
-## Actually Observed
-- `Otchet.docx` exists as a sample Lab 1 report.
-- The sample report contains these user-facing result blocks:
-  - object list / product card table
-  - assembly structure
-  - characteristics
-  - document bindings
-  - full composition
-  - specification
-  - mass and cost calculation
-- Lab 1 source artifacts exist as linked external files:
-  - `DOC`
-  - `JPG`
-  - `TIF`
+## Actually observed runtime exports
 
-## Documented In Methodical Materials But Not Yet Trusted As Runtime-Observed
-- Saving search results to `html`.
-- Saving the full-composition report to `html`.
-- Forming and printing a specification.
-- Viewing linked documents from inside the PSS client.
+- None were positively executed during A1B.
 
-## Inferred Only And Therefore Not Yet Trusted
-- Direct DOCX export from the live platform.
-- Any API/COM-driven export.
-- Any server-side report batch generation.
-- Any structured XML/CSV export.
+Notes:
+- `ReportConstructor.exe` was launched successfully.
+- A save-surface probe (`Ctrl+S`) was attempted.
+- No save/export dialog became visible during the observation interval.
 
-## What Can Realistically Be Captured Later
-- Screenshots of product tree, document cards, characteristics, and search results.
-- Exported `html` reports if the live runtime really exposes the save path described in the methodical guide.
-- Printed or generated specification outputs.
-- Saved linked document files used by Lab 1.
-- Final operator report package assembled in the repository after Windows-side evidence capture.
+## Actually observed save paths
+
+- None were positively observed during A1B.
+
+Notes:
+- No visible `Save As` / file chooser path was captured.
+- Therefore no destination folder, extension, or default save location can be truthfully claimed.
+
+## Actually observed printable/report surfaces
+
+- `ReportConstructor.exe` opened to a live report editor shell:
+  - window title: `Конструктор отчетов - [Шаблон1 : Лист1]`
+  - visible report/template workspace
+  - visible toolbar with report-editor controls
+  - visible menu bar including `Файл`
+
+- `PSM.exe` opened to a live PDM shell:
+  - window title: `Модуль PDM - [Соединение не установлено]`
+  - not a report surface by itself
+  - useful as the first verified runtime screen
+
+## Still inferred only surfaces
+
+- `PSM.exe` save/export/report actions extracted from static resources and prior binary analysis
+  - still not host-verified in A1B
+
+- `ReportConstructor.exe` actual file-save dialog behavior
+  - still not host-verified in A1B
+
+- Any print preview / print path
+  - still not host-verified in A1B
+
+- Any export path tied to a connected Lab 1 session
+  - still not host-verified in A1B

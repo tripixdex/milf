@@ -1,51 +1,55 @@
-# Windows Dependencies
+# WINDOWS_DEPENDENCIES
 
-## Installer Behavior
+## Host-verified dependencies
 
-### Actually observed
-- `pss_4_353.exe` is a Windows `PE32` GUI executable.
-- The binary contains `Nullsoft Install System v2.45` manifest text.
-- It should be treated as an installer package, not as a proven standalone portable client.
+- A real interactive Windows desktop session is required.
+  Observed host:
+  - `Windows 10 Home Single Language`
+  - build family `19041`
 
-### Not yet verified on a real Windows host
-- Actual installer UI flow.
-- Install target directories.
-- Whether the installer bundles all required runtime components.
-- Whether it launches the client immediately after installation.
+- A non-elevated user token is sufficient for first launch of extracted runtime binaries.
+  Observed:
+  - current token integrity was `Medium`
+  - `PSM.exe` launched without observed elevation
+  - `ReportConstructor.exe` launched without observed elevation
 
-## Required Host Dependencies
+- The extracted application directory must remain intact when launching binaries directly from payload.
+  Observed working launch base:
+  - [`_pss_payload_extracted`](/C:/Users/79004/OneDrive/Рабочий%20стол/study/8sem/milf/_pss_payload_extracted)
 
-### Actually observed
-- A Windows execution environment is required.
-- No native macOS execution path was found.
+- Bundled runtime libraries inside the extracted payload were sufficient for first launch of:
+  - [`PSM.exe`](/C:/Users/79004/OneDrive/Рабочий%20стол/study/8sem/milf/_pss_payload_extracted/PSM.exe)
+  - [`ReportConstructor.exe`](/C:/Users/79004/OneDrive/Рабочий%20стол/study/8sem/milf/_pss_payload_extracted/ReportConstructor.exe)
 
-### Documented in methodical materials, but not yet host-verified
-- The Lab 1 guide describes a three-level architecture:
-  - `Oracle Server 9.2+`
-  - `Oracle Client 9.2+` together with `PSSOracleServer`
-  - client module `PSS`
-- The same guide describes initial setup actions such as:
-  - DB creation
-  - organization structure setup
-  - user/group setup
-  - dictionaries, units, characteristics, document types
+- A live DB/session connection was **not** required to reach the first `PSM.exe` shell.
+  Observed:
+  - shell title was `Модуль PDM - [Соединение не установлено]`
 
-## Admin Rights
-- Not actually verified.
-- Because installation was not executed on Windows, any claim about administrator privileges would be speculative.
+## Methodical-only inferred dependencies
 
-## Database / Server Prerequisites
-- They seem likely from the methodical guide.
-- They are not yet verified on the real host.
-- At this stage Lab 1 must not be assumed to be runnable as a purely isolated desktop client.
+- Original installer artifact:
+  - `Лаб PSS/pss_4_353.exe`
+  - not available in the current repo snapshot during A1B
 
-## CAD / Office Dependencies For Lab 1
+- A real PSS database and/or transport-backed session for actual Lab 1 object work inside `PSM.exe`
+  - not host-verified in A1B
 
-### Actually observed
-- Lab 1 source assets include `DOC`, `JPG`, and `TIF`.
-- Labs 3–4 include `DWG`/`DWL`, but those belong to a later workflow block.
+- Possible server-side transport/or Oracle-backed environment for some PSS modes
+  - inferred from binary inventory and prior static analysis
+  - not host-verified in A1B
 
-### Current evidence-based stance
-- CAD dependencies are not yet proven mandatory for the smallest Lab 1 path.
-- Office or document-viewer capability may be practically useful because Lab 1 includes linked textual and raster documents.
-- No live Windows-side dependency was verified in this scope.
+- Original Lab 1 methodical guide and sample report
+  - requested by scope
+  - not present in the current workspace snapshot during A1B
+
+## Optional / useful tools
+
+- Screenshot capture capability for runtime evidence
+  Observed output location:
+  - [`artifacts/a1b`](/C:/Users/79004/OneDrive/Рабочий%20стол/study/8sem/milf/artifacts/a1b)
+
+- Existing extracted payload inventory for fallback runtime work when installer artifact is missing
+  - [`_pss_payload_extracted`](/C:/Users/79004/OneDrive/Рабочий%20стол/study/8sem/milf/_pss_payload_extracted)
+
+- Existing deep static reverse-engineering report for component identification
+  - [`report.md`](/C:/Users/79004/OneDrive/Рабочий%20стол/study/8sem/milf/report.md)
